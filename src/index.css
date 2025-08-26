@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-sky-400 to-emerald-400 min-h-screen;
+  }
+}
+
+@layer components {
+  .game-button {
+    @apply bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .game-button-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .feedback-correct {
+    @apply bg-green-100 border-green-500 text-green-700;
+  }
+  
+  .feedback-incorrect {
+    @apply bg-red-100 border-red-500 text-red-700;
+  }
+}
