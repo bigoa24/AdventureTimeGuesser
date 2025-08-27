@@ -11,7 +11,7 @@ export const GAME_CONFIG = {
   MAX_HIGH_SCORES: 5,
   
   // Blur intensity for blur mode (in pixels)
-  BLUR_INTENSITY: '20px',
+  BLUR_INTENSITY: '13px',
   
   // Scale factor for crop mode
   CROP_SCALE_FACTOR: 3.5,

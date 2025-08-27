@@ -145,8 +145,8 @@ const Game: React.FC = () => {
     setGameState(newGameState);
     setGuess('');
 
-    // Korkunç temada doğru cevap verince 2.5 saniye bekleyip sonraki karaktere geç
-    if (isDarkMode && isCorrect) {
+    // Korkunç temada cevap verince (doğru veya yanlış) 2.5 saniye bekleyip sonraki karaktere geç
+    if (isDarkMode) {
       setTimeout(() => {
         const nextGameState = nextRound(newGameState);
         setGameState(nextGameState);
@@ -347,12 +347,6 @@ const Game: React.FC = () => {
     if (sinisterAudioRef.current) {
       sinisterAudioRef.current.pause();
       sinisterAudioRef.current.currentTime = 0;
-    }
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' && !gameState.hasAnswered) {
-      handleSubmitGuess();
     }
   };
 
@@ -571,7 +565,6 @@ const Game: React.FC = () => {
                 onChange={setGuess}
                 onSubmit={handleSubmitGuess}
                 onSkip={handleSkipRound}
-                onKeyPress={handleKeyPress}
                 disabled={gameState.hasAnswered && isDarkMode} // Korkunç temada doğru cevap verince disabled
                 isDarkMode={isDarkMode}
               />

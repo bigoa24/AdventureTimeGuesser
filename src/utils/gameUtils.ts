@@ -90,16 +90,11 @@ export function processGuess(gameState: GameState, isCorrect: boolean, isDarkMod
         lastGuessCorrect: true
       };
     } else {
-      // Yanlış cevap: direkt sonraki karaktere geç
-      const nextRoundIndex = gameState.currentRoundIndex + 1;
-      const isGameComplete = nextRoundIndex >= gameState.rounds.length;
-      
+      // Yanlış cevap: sadece cevap verildi olarak işaretle, round geçişi Game component'inde yapılacak
       return {
         ...gameState,
-        currentRoundIndex: nextRoundIndex,
-        isGameComplete,
-        hasAnswered: false,
-        lastGuessCorrect: null
+        hasAnswered: true,
+        lastGuessCorrect: false
       };
     }
   }

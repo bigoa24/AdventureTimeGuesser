@@ -41,3 +41,7 @@ const JumpscareScreen: React.FC = () => {
 };
 
 export default JumpscareScreen;
+
+
+
+

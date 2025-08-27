@@ -5,7 +5,6 @@ interface GuessInputProps {
   onChange: (value: string) => void;
   onSubmit: () => void;
   onSkip: () => void;
-  onKeyPress: (event: React.KeyboardEvent) => void;
   disabled: boolean;
   isDarkMode?: boolean;
 }
@@ -15,7 +14,6 @@ const GuessInput: React.FC<GuessInputProps> = ({
   onChange,
   onSubmit,
   onSkip,
-  onKeyPress,
   disabled,
   isDarkMode
 }) => {
@@ -43,6 +41,12 @@ const GuessInput: React.FC<GuessInputProps> = ({
     }
   }, [disabled]);
 
+  const handleKeyPress = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' && !disabled && value.trim()) {
+      onSubmit();
+    }
+  };
+
   if (isDarkMode) {
     // Korkunç tema: Sadece input kutusu, hiçbir yazı yok
     return (
@@ -52,7 +56,7 @@ const GuessInput: React.FC<GuessInputProps> = ({
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          onKeyPress={onKeyPress}
+          onKeyPress={handleKeyPress}
           placeholder="..."
           className="w-full px-6 py-4 bg-gray-900 border-2 border-red-900 rounded-lg focus:border-red-500 focus:outline-none text-white text-xl text-center placeholder-gray-500"
           disabled={disabled}
@@ -95,7 +99,7 @@ const GuessInput: React.FC<GuessInputProps> = ({
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          onKeyPress={onKeyPress}
+          onKeyPress={handleKeyPress}
           placeholder="Enter character name..."
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-sky-400 focus:outline-none text-lg"
           disabled={disabled}
